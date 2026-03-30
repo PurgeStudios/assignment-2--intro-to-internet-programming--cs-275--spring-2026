@@ -10,23 +10,10 @@
 // DON’T PROCEED UNTIL YOU’RE SURE ESLINT AND EDITORCONFIG ARE WORKING CORRECTLY
 // -----------------------------------------------------------------------------
 window.onload = () => {
-       alert('Test');                    
+       alert('Test');
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const body = document.querySelector(`body`);
+let script = document.createElement(`script`);
+script.setAttribute(`src`, `json/data.json`);
+body.appendChild(script);
