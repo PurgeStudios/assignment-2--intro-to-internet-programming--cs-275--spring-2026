@@ -13,11 +13,21 @@ const body = document.querySelector(`body`);
 const carousel_slides = document.querySelector(`.carousel-slides`);
 let carousel_left_arrow = document.getElementsByClassName(`carousel-navigation`)[0].children[0];
 let carousel_right_arrow = document.getElementsByClassName(`carousel-navigation`)[0].children[1];
-carousel_right_arrow.style.visibility = `hidden`;
 
-//Key press fucntions
-document.addEventListener('keydown', function(event) {
-    switch(event.key) {
+//Display information for each card within data
+function cards(data) {
+    let count = 0;
+    let album_name = document.createElement(`h2`);
+    let artist_name = document.createElement(`h3`);
+    let image = document.createElement(`img`);
+    let credit_name = document.createElement(`h4`);
+    let review = document.createElement(`p`);
+    let source = document.createElement(`p`);
+
+    //Key press fucntion for arrow images
+    carousel_right_arrow.style.visibility = `hidden`; //hide right arrow by default
+    document.addEventListener('keydown', function(event) {
+        switch(event.key) {
         case 'ArrowLeft':
             carousel_right_arrow.style.visibility = `visible`;
             console.log(count);
@@ -25,11 +35,11 @@ document.addEventListener('keydown', function(event) {
                 carousel_left_arrow.style.visibility = `hidden`;
                 carousel_right_arrow.style.visibility = `visible`;
             }
-        else{
-         carousel_left_arrow.style.visibility = `visible`;
-            count = count + 1;
-         }
-        break;
+            else{
+                carousel_left_arrow.style.visibility = `visible`;
+                count = count + 1;
+            }
+            break;
         case 'ArrowRight':
             carousel_left_arrow.style.visibility = `visible`;
             console.log(count);
@@ -37,67 +47,86 @@ document.addEventListener('keydown', function(event) {
                 carousel_right_arrow.style.visibility = `hidden`;
                 carousel_left_arrow.style.visibility = `visible`;
             }
-        else{
-            carousel_right_arrow.style.visibility = `visible`;
-            count = count - 1;
+            else{
+                carousel_right_arrow.style.visibility = `visible`;
+                count = count - 1;
+            }
+            break;
         }
-        break;
-    }
-});
-//Mouse click functions
-let count = 0;
-carousel_left_arrow.addEventListener(`click`, () => {
-    carousel_right_arrow.style.visibility = `visible`;
-    console.log(count);
-    if (count === 2){
-        carousel_left_arrow.style.visibility = `hidden`;
-        carousel_right_arrow.style.visibility = `visible`;
-    }
-    else{
-        carousel_left_arrow.style.visibility = `visible`;
-        count = count + 1;
-    }
-
-});
-carousel_right_arrow.addEventListener(`click`, () => {
-    carousel_left_arrow.style.visibility = `visible`;
-    console.log(count);
-    if (count === 0){
-        carousel_right_arrow.style.visibility = `hidden`;
-        carousel_left_arrow.style.visibility = `visible`;
-    }
-    else{
-        carousel_right_arrow.style.visibility = `visible`;
-        count = count - 1;
-    }
-});
-
-//Display information for each card within data
-function cards(data) {
-    let album_name = document.createElement(`h2`);
-    album_name.textContent = data.card[0].album;
-
-    let artist_name = document.createElement(`h3`);
+    });
+    //Display First Slide by default
+    let slide = 0;
+    album_name.textContent = data.card[slide].album;
     artist_name.innerHTML = `<a href =
-        ${data.card[0].url}> ${data.card[0].artist}</a>`;
+        ${data.card[slide].url}> ${data.card[slide].artist}</a>`;
 
-    let image = document.createElement(`img`);
-    image.setAttribute(`src`, data.card[0].cover_image.path);
-    image.setAttribute(`width`, data.card[0].cover_image.width);
-    image.setAttribute(`height`, data.card[0].cover_image.height);
-    image.setAttribute(`alt`, data.card[0].cover_image.alt_content);
+    image.setAttribute(`src`, data.card[slide].cover_image.path);
+    image.setAttribute(`width`, data.card[slide].cover_image.width);
+    image.setAttribute(`height`, data.card[slide].cover_image.height);
+    image.setAttribute(`alt`, data.card[slide].cover_image.alt_content);
 
-    let credit_name = document.createElement(`h4`);
     credit_name.innerHTML = `Credit: <a href =
-        ${data.card[0].cover_image.url}> ${data.card[0].cover_image.credit}</a>`;
+        ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
     credit_name.style.textAlign = `center`;
-
-    let review = document.createElement(`p`);
-    review.innerText = data.card[0].review.content;
-
-    let source = document.createElement(`p`);
+    review.innerText = data.card[slide].review.content;
+    review.style.textAlign = `left`;
     source.innerHTML = `— <a href =
-        ${data.card[0].review.url}> ${data.card[0].review.source}</a>`;
+        ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
+    source.style.textAlign = `left`;
+
+    //Key press fucntions for carousel slides
+    document.addEventListener('keydown', function(event) {
+        switch(event.key) {
+            case 'ArrowLeft':
+                slide = slide + 1;
+                if (slide >= 0 && slide <= 3) {
+                    album_name.textContent = data.card[slide].album;
+                    artist_name.innerHTML = `<a href =
+                        ${data.card[slide].url}> ${data.card[slide].artist}</a>`;
+
+                    image.setAttribute(`src`, data.card[slide].cover_image.path);
+                    image.setAttribute(`width`, data.card[slide].cover_image.width);
+                    image.setAttribute(`height`, data.card[slide].cover_image.height);
+                    image.setAttribute(`alt`, data.card[slide].cover_image.alt_content);
+
+                    credit_name.innerHTML = `Credit: <a href =
+                        ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
+                    credit_name.style.textAlign = `center`;
+                    review.innerText = data.card[slide].review.content;
+                    source.innerHTML = `— <a href =
+                    ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
+                }
+                else{
+                    slide = slide - 1;
+                    console.log(`You are at the end of the carousel!`)
+                }
+                break;
+            case 'ArrowRight':
+                slide = slide - 1;
+                if (slide >= 0 && slide <= 3) {
+                    album_name.textContent = data.card[slide].album;
+                    artist_name.innerHTML = `<a href =
+                        ${data.card[slide].url}> ${data.card[slide].artist}</a>`;
+
+                    image.setAttribute(`src`, data.card[slide].cover_image.path);
+                    image.setAttribute(`width`, data.card[slide].cover_image.width);
+                    image.setAttribute(`height`, data.card[slide].cover_image.height);
+                    image.setAttribute(`alt`, data.card[slide].cover_image.alt_content);
+
+                    credit_name.innerHTML = `Credit: <a href =
+                        ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
+                    credit_name.style.textAlign = `center`;
+                    review.innerText = data.card[slide].review.content;
+                    source.innerHTML = `— <a href =
+                        ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
+                }
+                else {
+                    slide = slide +1;
+                    console.log(`You are at the end of the carousel!`)
+                }
+                break;
+        }
+    });
 
     carousel_slides.appendChild(album_name);
     carousel_slides.appendChild(artist_name);
