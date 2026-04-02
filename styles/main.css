@@ -10,19 +10,51 @@
 // DON’T PROCEED UNTIL YOU’RE SURE STYLELINT AND EDITORCONFIG ARE WORKING RIGHT
 // -------------------------------------------------------------------------- */
 
-body, h1 {
+body {
   text-align: center;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 5px;
+  line-height: 1.1875;
+}
+
+h2 {
+  padding-top: 5px;
+
+}
+
+h3 {
+  padding-bottom: 5px;
+}
+
+h4 {
+  font-size: 13px;
+  padding: 5px;
+}
+
+p {
+  padding: 5px;
+   line-height: 1.4;
 }
 
 .carousel {
   position: relative;
   width: 640px;
   margin: auto;
+  padding: 20px;
 }
 
 .carousel-navigation {
   position: absolute;
-  top:215px;
+  top:250px;
   width: 640px;
   z-index: 3;
 }
