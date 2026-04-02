@@ -9,27 +9,21 @@
 //
 // DON’T PROCEED UNTIL YOU’RE SURE STYLELINT AND EDITORCONFIG ARE WORKING RIGHT
 // -------------------------------------------------------------------------- */
-abcdef {
-     color: cs275
+
+h1 {
+  text-align: center;
 }
 
+nav.carousel-navigation {
+  position:relative;
+  z-index: 3;
+}
 
+.carousel {
+  z-index: 2;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.carousel-slides {
+  text-align: center;
+  z-index: 1;
+}
