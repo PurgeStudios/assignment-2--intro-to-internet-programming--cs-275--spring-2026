@@ -1,10 +1,10 @@
 cards({
   "card": [
-    { //artist's one card
+    {
       "artist": "Dawn of Midi",
       "album": "Dysnomia",
       "cover_image": {
-        "path": "img/12392240423_1ebe6a740d_z.jpg",
+        "path": "img/123922404231ebe6a740dz.jpg",
         "width": 640,
         "height": 427,
         "alt_content": "[Dawn of Midi on stage]",
@@ -18,7 +18,7 @@ cards({
         "url": "https://pitchfork.com/reviews/albums/18308-dawn-of-midi-dysnomia/"
       }
     },
-    { //artist's two card
+    {
       "artist": "Holly Herndon",
       "album": "PROTO",
       "cover_image": {
@@ -36,7 +36,7 @@ cards({
         "url": "https://www.theguardian.com/music/2019/may/10/holly-herndon-proto-review-4ad"
       }
     },
-    { //artist's three card
+    {
       "artist": "Wu-Tang Clan",
       "album": "Enter the Wu-Tang (36 Chambers)",
       "cover_image": {
@@ -54,7 +54,7 @@ cards({
         "url": "https://loudsoundmagazine.com/2018/11/20/album-review-wu-tang-clan-enter-the-wu-tang-clan-36-chambers/"
       }
     },
-    { //artist's four card
+    {
       "artist": "Gotan Project",
       "album": "Lunático",
       "cover_image": {
