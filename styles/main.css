@@ -10,20 +10,23 @@
 // DON’T PROCEED UNTIL YOU’RE SURE STYLELINT AND EDITORCONFIG ARE WORKING RIGHT
 // -------------------------------------------------------------------------- */
 
-h1 {
+body, h1 {
   text-align: center;
-}
-
-nav.carousel-navigation {
-  position:relative;
-  z-index: 3;
 }
 
 .carousel {
-  z-index: 2;
+  position: relative;
+  width: 640px;
+  margin: auto;
 }
 
-.carousel-slides {
-  text-align: center;
-  z-index: 1;
+.carousel-navigation {
+  position: absolute;
+  top:215px;
+  width: 640px;
+  z-index: 3;
+}
+
+a:nth-child(2) {
+  padding-left: 540px;
 }
