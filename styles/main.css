@@ -27,22 +27,28 @@ h1 {
 }
 
 h2 {
-  padding-top: 5px;
-
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h3 {
-  padding-bottom: 5px;
+  font-size: 0.87rem;
+  padding-bottom: 40px;
 }
 
 h4 {
   font-size: 13px;
   padding: 5px;
+  text-align: center;
 }
 
 p {
   padding: 5px;
-   line-height: 1.4;
+  line-height: 1.4;
+  text-align: left;
 }
 
 .carousel {
@@ -54,7 +60,7 @@ p {
 
 .carousel-navigation {
   position: absolute;
-  top:250px;
+  top: 290px;
   width: 640px;
   z-index: 3;
 }
