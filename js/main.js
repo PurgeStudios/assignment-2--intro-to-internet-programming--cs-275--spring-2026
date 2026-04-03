@@ -16,7 +16,6 @@ let carousel_right_arrow = document.getElementsByClassName(`carousel-navigation`
 
 //Display information for each card within data
 function cards(data) {
-    let count = 0;
     let album_name = document.createElement(`h2`);
     let artist_name = document.createElement(`h3`);
     let image = document.createElement(`img`);
@@ -24,36 +23,6 @@ function cards(data) {
     let review = document.createElement(`p`);
     let source = document.createElement(`p`);
 
-    //Key press fucntion for arrow images
-    carousel_right_arrow.style.visibility = `hidden`; //hide right arrow by default
-    document.addEventListener('keydown', function(event) {
-        switch(event.key) {
-        case 'ArrowLeft':
-            carousel_right_arrow.style.visibility = `visible`;
-            console.log(count);
-            if (count === 2){
-                carousel_left_arrow.style.visibility = `hidden`;
-                carousel_right_arrow.style.visibility = `visible`;
-            }
-            else{
-                carousel_left_arrow.style.visibility = `visible`;
-                count = count + 1;
-            }
-            break;
-        case 'ArrowRight':
-            carousel_left_arrow.style.visibility = `visible`;
-            console.log(count);
-            if (count === 0){
-                carousel_right_arrow.style.visibility = `hidden`;
-                carousel_left_arrow.style.visibility = `visible`;
-            }
-            else{
-                carousel_right_arrow.style.visibility = `visible`;
-                count = count - 1;
-            }
-            break;
-        }
-    });
     //Display First Slide by default
     let slide = 0;
     album_name.textContent = data.card[slide].album;
@@ -67,19 +36,30 @@ function cards(data) {
 
     credit_name.innerHTML = `Credit: <a href =
         ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
-    credit_name.style.textAlign = `center`;
     review.innerText = data.card[slide].review.content;
-    review.style.textAlign = `left`;
     source.innerHTML = `— <a href =
         ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
-    source.style.textAlign = `left`;
 
     //Key press fucntions for carousel slides
+    carousel_right_arrow.style.visibility = `hidden`; //hide right arrow by default
     document.addEventListener('keydown', function(event) {
         switch(event.key) {
             case 'ArrowLeft':
                 slide = slide + 1;
+                if(slide <= 0){
+                    carousel_right_arrow.style.visibility = `hidden`;
+                }
+                else{
+                    carousel_right_arrow.style.visibility = `visible`;
+                }
+                if(slide >= 3){
+                    carousel_left_arrow.style.visibility = `hidden`;
+                }
+                else{
+                    carousel_left_arrow.style.visibility = `visible`;
+                }
                 if (slide >= 0 && slide <= 3) {
+                    console.log(slide);
                     album_name.textContent = data.card[slide].album;
                     artist_name.innerHTML = `<a href =
                         ${data.card[slide].url}> ${data.card[slide].artist}</a>`;
@@ -91,19 +71,31 @@ function cards(data) {
 
                     credit_name.innerHTML = `Credit: <a href =
                         ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
-                    credit_name.style.textAlign = `center`;
                     review.innerText = data.card[slide].review.content;
                     source.innerHTML = `— <a href =
                     ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
                 }
                 else{
                     slide = slide - 1;
-                    console.log(`You are at the end of the carousel!`)
+                    console.error(`You are at the end of the carousel!`)
                 }
                 break;
             case 'ArrowRight':
                 slide = slide - 1;
+                if(slide <= 0){
+                    carousel_right_arrow.style.visibility = `hidden`;
+                }
+                else{
+                    carousel_right_arrow.style.visibility = `visible`;
+                }
+                if(slide >= 3){
+                    carousel_left_arrow.style.visibility = `hidden`;
+                }
+                else{
+                    carousel_left_arrow.style.visibility = `visible`;
+                }
                 if (slide >= 0 && slide <= 3) {
+                    console.log(slide);
                     album_name.textContent = data.card[slide].album;
                     artist_name.innerHTML = `<a href =
                         ${data.card[slide].url}> ${data.card[slide].artist}</a>`;
@@ -115,14 +107,13 @@ function cards(data) {
 
                     credit_name.innerHTML = `Credit: <a href =
                         ${data.card[slide].cover_image.url}> ${data.card[slide].cover_image.credit}</a>`;
-                    credit_name.style.textAlign = `center`;
                     review.innerText = data.card[slide].review.content;
                     source.innerHTML = `— <a href =
                         ${data.card[slide].review.url}> ${data.card[slide].review.source}</a>`;
                 }
                 else {
                     slide = slide +1;
-                    console.log(`You are at the end of the carousel!`)
+                    console.error(`You are at the end of the carousel!`)
                 }
                 break;
         }
