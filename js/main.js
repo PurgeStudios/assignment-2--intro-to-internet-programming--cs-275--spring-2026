@@ -42,9 +42,9 @@ function cards(data) {
 
     //Key press fucntions for carousel slides
     carousel_right_arrow.style.visibility = `hidden`; //hide right arrow by default
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener(`keydown`, function(event) {
         switch(event.key) {
-            case 'ArrowLeft':
+            case `ArrowLeft`:
                 slide = slide + 1;
                 if(slide <= 0){
                     carousel_right_arrow.style.visibility = `hidden`;
@@ -77,10 +77,10 @@ function cards(data) {
                 }
                 else{
                     slide = slide - 1;
-                    console.error(`You are at the end of the carousel!`)
+                    console.error(`You are at the end of the carousel!`);
                 }
                 break;
-            case 'ArrowRight':
+            case `ArrowRight`:
                 slide = slide - 1;
                 if(slide <= 0){
                     carousel_right_arrow.style.visibility = `hidden`;
@@ -113,7 +113,7 @@ function cards(data) {
                 }
                 else {
                     slide = slide +1;
-                    console.error(`You are at the end of the carousel!`)
+                    console.error(`You are at the end of the carousel!`);
                 }
                 break;
         }

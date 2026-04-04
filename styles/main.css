@@ -12,13 +12,13 @@
 
 body {
   text-align: center;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-size: 16px;
 }
 
 h1 {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 2rem;
@@ -35,7 +35,7 @@ h2 {
 }
 
 h3 {
-  font-size: 0.87rem;
+  font-size: .87rem;
   padding-bottom: 40px;
 }
 
